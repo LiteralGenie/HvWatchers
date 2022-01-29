@@ -93,7 +93,7 @@ export class Serializer {
     }
 }
 
-export interface SerializedBattleState {
+export interface BattleStateDto {
     player: {
         hp: {
             ratio: number;

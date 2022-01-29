@@ -15,19 +15,23 @@ See these files for more info on what's available in each module:
   - `hvw_logger`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/plugins/hvw_logger.ts)
 # Installation
 
-1. Download [release](https://github.com/LiteralGenie/HvWatchers/releases) files.
-2. Specify an AMD loader like [alameda](https://github.com/requirejs/alameda) as a dependency: 
-    - `// @require      https://cdn.jsdelivr.net/npm/alameda@1.4.0/alameda.js`
-3. Specify the .js files as dependencies in your userscript by adding `@require file:///path/to/file` headers.
-    - The only mandatory dependency is `hvw_core.js`. Anything else is optional.
+To use this in a userscript...
+1. Specify `@require`s for the following dependencies
+    - an AMD loader like [alameda](https://github.com/requirejs/alameda) 
+       - `// @require      https://cdn.jsdelivr.net/npm/alameda@1.4.0/alameda.js`
+    - [rxjs](https://rxjs.dev/guide/overview)
+       - `// @require      https://cdnjs.cloudflare.com/ajax/libs/rxjs/8.0.0-alpha.0/rxjs.umd.min.js`
+1. Download the .js files from the [release section](https://github.com/LiteralGenie/HvWatchers/releases) and specify them as dependencies: `// @require file:///path/to/hvw_core.js`.
     - Your userscript extension will need access to local files.
         - [Chrome / Tampermonkey](https://www.tampermonkey.net/faq.php#Q204) 
         - [Firefox / Greasemonkey](https://stackoverflow.com/a/13888886)
-4. (maybe optional) Set `ajaxRound: false` in MB.
-5. `require(...)` whatever you need (see the [example section](#examples))
+1. (maybe optional) Set `ajaxRound: false` in MB.
 
 # Building
-@todo
+Run the typescript compiler:
+   - `tsc --watch --project tsconfig.core.json`
+        - vscode has a [shortcut](https://code.visualstudio.com/docs/typescript/typescript-compiling#_step-2-run-the-typescript-build) for this
+
 
 # Examples
 
@@ -113,7 +117,8 @@ logEntry$.subscribe(lines => console.log(lines.join('\n')))
 
 # @todo
   - expose more observables for `hvw_logger`
-     - round start, round end, battle start, battle end
-       - by parsing log text
+    - round start, round end, battle start, battle end
+      - by parsing log text
   - how-to for making MB play nice
+  - bundle dependencies
   - docs? at least the exports / data classes?

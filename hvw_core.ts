@@ -1,10 +1,10 @@
 import { ReplaySubject } from 'rxjs'
 import { Parser } from './classes/parser'
-import { SerializedBattleState, Serializer } from './classes/serializer'
+import { BattleStateDto, Serializer } from './classes/serializer'
 import { execute_when_exists } from './utils/misc_utils'
 
-export const stateLoad$ = new ReplaySubject<SerializedBattleState>()
-export const stateMutation$ = new ReplaySubject<SerializedBattleState>()
+export const stateLoad$ = new ReplaySubject<BattleStateDto>()
+export const stateMutation$ = new ReplaySubject<BattleStateDto>()
 
 
 function watch_state(subject$) {
