@@ -22,20 +22,3 @@ function main() {
 }
 
 main()
-
-/**
- * Initializing Grindfest (Round 747 / 1000) ...
- * Spawned Monster A: MID=190505 (Duanduan670010) LV=500 HP=251060
- * Spawned Monster B: MID=207231 (Ganjinzero) LV=500 HP=161382
- * ...
- * 
- * You cast Imperil.
- * Duanduan670010 gains the effect Imperiled.
- * Ganjinzero gains the effect Imperiled.
- * ...
- * 
- * You cast Ragnarok.
- * Ragnarok blasts Duanduan670010 for 165210 dark damage (50% resisted)
- * Duanduan670010 gains the effect Blunted Attack.
- * ...
- */
