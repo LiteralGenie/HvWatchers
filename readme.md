@@ -12,7 +12,7 @@ Extracts in-battle info like the battle log, active buffs, player health, etc. D
 # Installation
 
 1. Download [release](https://github.com/LiteralGenie/HvWatchers/releases) files.
-2. Import the files into your userscript by adding `@require file:///path/to/file` headers.
+2. Import the .js files into your userscript by adding `@require file:///path/to/file` headers.
     - The only mandatory import is `hvw_core.js`. Anything else is optional.
     - Your userscript extension will need access to local files.
         - [Chrome / Tampermonkey](https://www.tampermonkey.net/faq.php#Q204) 
