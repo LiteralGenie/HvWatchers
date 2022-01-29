@@ -7,7 +7,7 @@
 
 # Description
 
-Extracts in-battle info like the battle log, active buffs, player health, etc. Designed to be extensible and whatever.
+Extracts in-battle info like the battle log, active buffs, player health, etc.
 
 # Installation
 
