@@ -93,6 +93,8 @@ rxjs.merge(stateLoad$, stateMutation$)
 
 /**
  * Dump battle log text
+ *   logEntry$ only emits *new* log entries, even if the page is refreshed. 
+ *   Logs for the latest turn are stored in localstorage
  */
 const [hvw_logger] = await require(['plugins/hvw_logger'])
 const {logEntry$} = hvw_logger

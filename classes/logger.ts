@@ -1,7 +1,7 @@
 import { arraysAreEqual } from "../utils/misc_utils"
 
 export class Logger {
-    static LOCAL_STORAGE_KEY = 'raw_turn_log'
+    static LOCAL_STORAGE_KEY = 'hvw_turn_log'
 
     static handle_records(records: Array<MutationRecord>) {
         const lines = records
