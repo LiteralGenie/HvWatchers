@@ -9,7 +9,7 @@
 
 Extracts in-battle info like the battle log, active buffs, player health, etc.
 
-See these files for more info on what's exported from each module:
+See these files for more info on what's available in each module:
   - `hvw_core`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/hvw_core.ts)
     [[2]](https://github.com/LiteralGenie/HvWatchers/blob/master/classes/serializer.ts#L96) 
   - `hvw_logger`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/plugins/hvw_logger.ts)
@@ -48,7 +48,7 @@ See these files for more info on what's exported from each module:
 
 /** 
  * Auto-click the round-completed popup (except on the final round) 
- * */
+ */
 const [hvw_core] = await require(['hvw_core'])
 const {stateLoad$, stateMutation$} = hvw_core
 
