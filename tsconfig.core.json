@@ -8,7 +8,7 @@
             "es2019"
         ],
         "module": "amd",
-        "sourceMap": false,
+        "sourceMap": true,
         "outFile": "dist/hvw_core.js",
         "moduleResolution": "node"
     }

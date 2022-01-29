@@ -10,7 +10,7 @@ export const logEntry$ = new ReplaySubject<string[]>().pipe(
 function watch_log(subject$) {
     const callback = (records => subject$.next(Logger.handle_records(records)))
     const config = { childList: true, subtree: true }
-    new MutationObserver(callback).observe(document.body, config)
+    new MutationObserver(callback).observe(document.querySelector('#textlog > tbody'), config)
 }
 
 function main() {

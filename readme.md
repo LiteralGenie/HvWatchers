@@ -42,16 +42,16 @@ Run the typescript compiler:
 // @match        *://*.hentaiverse.org/*
 // @grant        none
 
-// @require      file://F:\programming\js\HvWatchers\dist\hvw_core.js
-// @require      file://F:\programming\js\HvWatchers\dist\hvw_logger.js
-
 // @require      https://cdn.jsdelivr.net/npm/alameda@1.4.0/alameda.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/rxjs/8.0.0-alpha.0/rxjs.umd.min.js
+
+// @require      file://F:\programming\js\HvWatchers\dist\hvw_core.js
+// @require      file://F:\programming\js\HvWatchers\dist\hvw_logger.js
 // ==/UserScript==
 
 
-/** 
- * Auto-click the round-completed popup (except on the final round) 
+/**
+ * Auto-click the round-completed popup (except on the final round)
  */
 const [hvw_core] = await require(['hvw_core'])
 const {stateLoad$, stateMutation$} = hvw_core
@@ -65,7 +65,7 @@ stateMutation$.subscribe(_ => {
 })
 
 
-/** 
+/**
  * Listen for changes to the battle log. We need both Observables because...
  *   -> stateLoad$ is only fired on page load (basically round start)
  *   -> stateMutation$ is only fired when the battle log is appended to (so doesn't include round start)
@@ -87,13 +87,14 @@ rxjs.merge(stateLoad$, stateMutation$)
 
         const mob = monsters[0]
         const mobHp = (mob.hp.ratio*100).toFixed(0)
-        console.log(`Enemy "${mob.name}": ${mobHp}% hp | ${mob.buffs[0].name} (${mob.buffs[0].duration})`) // Enemy "Shadowcat027": 100% hp | Imperiled (40)
+        const mobBuff = (mob.buffs[0] || {})
+        console.log(`Enemy "${mob.name}": ${mobHp}% hp | ${mobBuff.name} (${mobBuff.duration})`) // Enemy "Shadowcat027": 100% hp | Imperiled (40)
     })
 
 
 /**
  * Dump battle log text
- *   logEntry$ only emits *new* log entries, even if the page is refreshed. 
+ *   logEntry$ only emits *new* log entries, even if the page is refreshed.
  *   Logs for the latest turn are stored in localstorage
  */
 const [hvw_logger] = await require(['plugins/hvw_logger'])
