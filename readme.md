@@ -13,10 +13,10 @@ Extracts in-battle info like the battle log, active buffs, player health, etc. D
 
 1. Download [release](...) files.
 2. Import the files into your userscript by adding `@require file:///path/to/file` headers.
-  - The only mandatory import is `hvw_core.js`. Anything else is optional.
-  - Your userscript extension will require access to local files.
-    - [Chrome / Tampermonkey](https://www.tampermonkey.net/faq.php#Q204) 
-    - [Firefox](https://stackoverflow.com/a/13888886)
+    - The only mandatory import is `hvw_core.js`. Anything else is optional.
+    - Your userscript extension will need access to local files.
+        - [Chrome / Tampermonkey](https://www.tampermonkey.net/faq.php#Q204) 
+        - [Firefox](https://stackoverflow.com/a/13888886)
 3. (maybe optional) Set `ajaxRound: false` in MB.
 
 # Development Process
