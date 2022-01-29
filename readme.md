@@ -9,22 +9,22 @@
 
 Extracts in-battle info like the battle log, active buffs, player health, etc.
 
-See these files for more info on what's exported:
-  - `hvw_core.js`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/hvw_core.ts)
+See these files for more info on what's exported from each module:
+  - `hvw_core`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/hvw_core.ts)
     [[2]](https://github.com/LiteralGenie/HvWatchers/blob/master/classes/serializer.ts#L96) 
-  - `hvw_logger.js`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/plugins/hvw_logger.ts)
+  - `hvw_logger`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/plugins/hvw_logger.ts)
 # Installation
 
 1. Download [release](https://github.com/LiteralGenie/HvWatchers/releases) files.
-2. Specify an AMD loader like alameda as a dependency: 
+2. Specify an AMD loader like [alameda](https://github.com/requirejs/alameda) as a dependency: 
     - `// @require      https://cdn.jsdelivr.net/npm/alameda@1.4.0/alameda.js`
-3. Import the .js files into your userscript by adding `@require file:///path/to/file` headers.
-    - The only mandatory imports is `hvw_core.js`. Anything else is optional.
+3. Specify the .js files as dependencies in your userscript by adding `@require file:///path/to/file` headers.
+    - The only mandatory dependency is `hvw_core.js`. Anything else is optional.
     - Your userscript extension will need access to local files.
         - [Chrome / Tampermonkey](https://www.tampermonkey.net/faq.php#Q204) 
         - [Firefox / Greasemonkey](https://stackoverflow.com/a/13888886)
 4. (maybe optional) Set `ajaxRound: false` in MB.
-5. `require(...)` whatever you need (see examples)
+5. `require(...)` whatever you need (see the [example section](#examples))
 
 # Building
 @todo
