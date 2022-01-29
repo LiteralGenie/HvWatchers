@@ -9,6 +9,9 @@
 
 Extracts in-battle info like the battle log, active buffs, player health, etc.
 
+Interface for observables exported by `hvw_core.js`: https://github.com/LiteralGenie/HvWatchers/blob/master/classes/serializer.ts#L96
+Interface for observables exported by `hvw_logger.js`: (just a string[])
+
 # Installation
 
 1. Download [release](https://github.com/LiteralGenie/HvWatchers/releases) files.
