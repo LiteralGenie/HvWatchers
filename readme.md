@@ -16,10 +16,10 @@ Extracts in-battle info like the battle log, active buffs, player health, etc. D
     - The only mandatory import is `hvw_core.js`. Anything else is optional.
     - Your userscript extension will need access to local files.
         - [Chrome / Tampermonkey](https://www.tampermonkey.net/faq.php#Q204) 
-        - [Firefox](https://stackoverflow.com/a/13888886)
+        - [Firefox / Greasemonkey](https://stackoverflow.com/a/13888886)
 3. (maybe optional) Set `ajaxRound: false` in MB.
 
-# Development Process
+# Building
 @todo
 
 # Examples
@@ -39,7 +39,9 @@ Extracts in-battle info like the battle log, active buffs, player health, etc. D
 // ==/UserScript==
 
 
-// Auto-click the round-completed popup (except on the final round)
+/** 
+ * Auto-click the round-completed popup (except on the final round) 
+ * */
 const [hvw_core] = await require(['hvw_core'])
 const {stateLoad$, stateMutation$} = hvw_core
 
@@ -52,9 +54,11 @@ stateMutation$.subscribe(_ => {
 })
 
 
-// Listen for changes to the battle log. We need both Observables because...
-//  -> stateLoad$ is only fired on page load (basically round start)
-//  -> stateMutation$ is only fired when the battle log is appended to (so doesn't include round start)
+/** 
+ * Listen for changes to the battle log. We need both Observables because...
+ *   -> stateLoad$ is only fired on page load (basically round start)
+ *   -> stateMutation$ is only fired when the battle log is appended to (so doesn't include round start)
+ */
 const [rxjs] = await require(['rxjs']) // import cool lib that handles data streams
 rxjs.merge(stateLoad$, stateMutation$)
     .subscribe(data => {
@@ -76,6 +80,9 @@ rxjs.merge(stateLoad$, stateMutation$)
     })
 
 
+/**
+ * Dump battle log text
+ */
 const [hvw_logger] = await require(['plugins/hvw_logger'])
 const {logEntry$} = hvw_logger
 logEntry$.subscribe(lines => console.log(lines.join('\n')))
