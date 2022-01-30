@@ -14,7 +14,7 @@ export class Buff {
             .from(document.querySelectorAll(this.SELECTOR_PLAYER))
             .map(img => this.from_img(img as HTMLImageElement))
 
-        const stance = document.querySelector("img[src='/isekai/y/battle/spirit_a.png']")
+        const stance = document.querySelector("img[src*='spirit_a.png']")
         if(stance) buffs.push(new Buff(stance.id,  'Spirit Stance', null))
 
         return buffs

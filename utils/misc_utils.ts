@@ -22,3 +22,26 @@ export function arraysAreEqual<T>(l: Array<T>, r: Array<T>): boolean {
 
     return true
 }
+
+export function splitArray<T>(arr: Array<T>, condition: (item: T) => boolean): Array<Array<T>> {
+    let result = []
+
+    let buffer = []
+    for(let i=0; i<=arr.length; i++) {
+        if(i === arr.length && buffer.length > 0) {
+            result.push(buffer)
+            break
+        }    
+        
+        const line = arr[i]
+        if(condition(line)) {
+            result.push(buffer)
+            buffer = []
+            continue
+        }
+
+        buffer.push(line)
+    }
+
+    return result
+}

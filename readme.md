@@ -7,9 +7,9 @@
 
 # Description
 
-Extracts in-battle info like the battle log, active buffs, player health, etc.
+Extracts in-battle info like the battle log, active buffs, player health, etc. Feel free to request features.
 
-See these files for more info on what's available in each module:
+See these files for more info on what's exported from each module:
   - `hvw_core`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/hvw_core.ts)
     [[2]](https://github.com/LiteralGenie/HvWatchers/blob/master/classes/serializer.ts#L96) 
   - `hvw_logger`: [[1]](https://github.com/LiteralGenie/HvWatchers/blob/master/plugins/hvw_logger.ts)
@@ -98,23 +98,29 @@ rxjs.merge(stateLoad$, stateMutation$)
  *   Logs for the latest turn are stored in localstorage
  */
 const [hvw_logger] = await require(['plugins/hvw_logger'])
-const {logEntry$} = hvw_logger
-logEntry$.subscribe(lines => console.log(lines.join('\n')))
+const {logEntryAll$, logEntryUnique$, roundStart$, roundEnd$, battleStart$, battleEnd$} = hvw_logger
+
+const dump = (title, lines) => {
+    console.log(title)
+    console.log(lines.join('\n')
+})
+
+roundStart$.subscribe(lines => dump('---round start---', lines))
+roundEnd$.subscribe(lines => dump('---round end---', lines))
+
 /**
+ * ---round start---
  * Initializing Grindfest (Round 747 / 1000) ...
  * Spawned Monster A: MID=190505 (Duanduan670010) LV=500 HP=251060
  * Spawned Monster B: MID=207231 (Ganjinzero) LV=500 HP=161382
  * [...]
  *
- * You cast Imperil.
- * Duanduan670010 gains the effect Imperiled.
- * Ganjinzero gains the effect Imperiled.
+ * ---round end---
+ * You cast Disintegrate.
+ * Disintegrate blasts Halfdragon Priscilla for 207970 dark damage
  * [...]
- *
- * You cast Ragnarok.
- * Ragnarok blasts Duanduan670010 for 165210 dark damage (50% resisted)
- * Duanduan670010 gains the effect Blunted Attack.
- * [...]
+ * Puggalapannattiatthakatha dropped [36 Credits]
+ * You gain 9246203 EXP!
  */
 ```
 
