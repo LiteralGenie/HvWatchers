@@ -2,6 +2,7 @@ import { filter, ReplaySubject } from "rxjs"
 import { Logger } from "../classes/logger"
 import { LogParser } from "../classes/log_parser"
 import { execute_when_exists } from "../utils/misc_utils"
+export { Logger } from "../classes/logger"
 
 /**
  * Warning:
@@ -58,7 +59,9 @@ function main() {
         const lineGroups = Logger.from_document(document)
         const first_turn = lineGroups[0]
         logEntryAll$.next(first_turn)
+        console.log(lineGroups)
 
+        // Clear localStorage log at start of new battle
         if(lineGroups.length === 1 && LogParser.is_battle_start(first_turn)) {
             Logger.clear()
         }

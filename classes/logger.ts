@@ -33,10 +33,11 @@ export class Logger {
 
     static dump(lines: Array<string>, clear?: boolean) {
         if(lines.length === 0) return
+        if(clear) Logger.clear()
 
-        const old_log = Logger.read()
-        let result = clear ? [lines] : [...old_log, lines]
-        localStorage.setItem(Logger.LOCAL_STORAGE_KEY, JSON.stringify(result))
+        const log = Logger.read()
+        log.push(lines)
+        localStorage.setItem(Logger.LOCAL_STORAGE_KEY, JSON.stringify(log))
     }
 
     static read(): Array<Array<string>> {

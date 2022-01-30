@@ -94,8 +94,6 @@ rxjs.merge(stateLoad$, stateMutation$)
 
 /**
  * Dump battle log text
- *   logEntry$ only emits *new* log entries, even if the page is refreshed.
- *   Logs for the latest turn are stored in localstorage
  */
 const [hvw_logger] = await require(['plugins/hvw_logger'])
 const {logEntryAll$, logEntryUnique$, roundStart$, roundEnd$, battleStart$, battleEnd$} = hvw_logger
@@ -122,8 +120,16 @@ roundEnd$.subscribe(lines => dump('---round end---', lines))
  * Puggalapannattiatthakatha dropped [36 Credits]
  * You gain 9246203 EXP!
  */
-```
 
+
+/** 
+ * The concatenated battle log for the current battle can retrieved via Logger
+ * This is cleared at the start of a new battle
+ */
+const {Logger, logEntryUnique$} = hvw_logger
+logEntryUnique.subscribe() // Logs are only generated if this is subscribed to
+console.log(Logger.read()) // https://files.catbox.moe/ibejdp.png
+```
 # @todo
   - expose more observables for `hvw_logger`
     - round start, round end, battle start, battle end
