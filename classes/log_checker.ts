@@ -1,4 +1,4 @@
-export class LogParser {
+export class LogChecker {
     static is_round_start(lines: string[]): boolean {
         const patt = /Initializing .* .../
 

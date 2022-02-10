@@ -1,6 +1,6 @@
 import { filter, ReplaySubject } from "rxjs"
 import { Logger } from "./classes/logger"
-import { LogParser } from "./classes/log_parser"
+import { LogChecker } from "./classes/log_checker"
 import { execute_when_exists } from "./utils/misc_utils"
 
 /**
@@ -27,18 +27,18 @@ export const logEntryUnique$ = logEntryAll$.pipe(
 // Emits at the start of a round
 // Refreshes will cause this to re-emit
 export const roundStart$ = logEntryAll$.pipe(
-    filter(LogParser.is_round_start)
+    filter(LogChecker.is_round_start)
 )
 
 // Emits at the end of a round 
 export const roundEnd$ = logEntryAll$.pipe(
-    filter(LogParser.is_round_end)
+    filter(LogChecker.is_round_end)
 )
 
 // Emits at the start of a battle
 // Refreshes will cause this to re-emit
 export const battleStart$ = logEntryAll$.pipe(
-    filter(LogParser.is_battle_start)
+    filter(LogChecker.is_battle_start)
 )
 
 // Emits at the end of a battle
@@ -59,7 +59,7 @@ function main() {
         logEntryAll$.next(first_turn)
 
         // Clear localStorage log at start of new battle
-        if(lineGroups.length === 1 && LogParser.is_battle_start(first_turn)) {
+        if(lineGroups.length === 1 && LogChecker.is_battle_start(first_turn)) {
             console.log('Clearing HVW turn log')
             Logger.clear()
         }
