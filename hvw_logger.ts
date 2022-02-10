@@ -1,14 +1,12 @@
 import { filter, ReplaySubject } from "rxjs"
-import { Logger } from "../classes/logger"
-import { LogParser } from "../classes/log_parser"
-import { execute_when_exists } from "../utils/misc_utils"
-export { Logger } from "../classes/logger"
+import { Logger } from "./classes/logger"
+import { LogParser } from "./classes/log_parser"
+import { execute_when_exists } from "./utils/misc_utils"
 
 /**
  * Warning:
- *   When checking the battle log at page load, this module will only emit the lines for the latest turn.
- *   So basically this module assumes that the player hasn't taken any actions with this script deactivated (refreshing the page is okay).
- *   But if actions are taken without this module being notified, there's a guarantee that no duplicate log entries will be emitted (opting for an omission instead).
+ *   When checking the battle log at page load, HV will only show log text for the last turn.
+ *   This means any actions taken from another browser or with the logger inactive will not be logged.
  */
 
 // Emits on refresh OR when the battle log contains new entries
@@ -59,10 +57,10 @@ function main() {
         const lineGroups = Logger.from_document(document)
         const first_turn = lineGroups[0]
         logEntryAll$.next(first_turn)
-        console.log(lineGroups)
 
         // Clear localStorage log at start of new battle
         if(lineGroups.length === 1 && LogParser.is_battle_start(first_turn)) {
+            console.log('Clearing HVW turn log')
             Logger.clear()
         }
 

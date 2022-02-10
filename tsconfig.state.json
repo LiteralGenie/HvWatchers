@@ -1,15 +1,17 @@
 {
-    "files": [ "hvw_core.ts" ],
+    "files": [ "hvw_state.ts" ],
     "compileOnSave": true,
+
     "compilerOptions": {
-        "target": "ES6",
+        "declaration": true,
         "lib": [
             "DOM",
             "es2019"
         ],
         "module": "amd",
+        "moduleResolution": "node",
+        "outFile": "dist/hvw_state.js",
         "sourceMap": true,
-        "outFile": "dist/hvw_core.js",
-        "moduleResolution": "node"
+        "target": "ES6"
     }
 }

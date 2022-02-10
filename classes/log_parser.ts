@@ -31,6 +31,10 @@ export class LogParser {
         })
     }
 
+    /**
+     * There's not a surefire way to determine if the battle has ended without depending on previous log emits
+     * so it's better to check the DOM for an end-of-battle button like hvw_logger does
+     */
     // static is_battle_end(lines: string[]): boolean {
     //     const patts = [
     //         /You have escaped from the battle./,
